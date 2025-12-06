@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 import { profileStorage } from "@/utils/storage";
+import { authUtils } from "@/utils/auth";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,11 +11,19 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userName, setUserName] = useState("");
   const location = useLocation();
 
   useEffect(() => {
     const profile = profileStorage.getProfile();
     setIsDarkMode(profile.darkMode);
+
+    const user = authUtils.getCurrentUser();
+    setIsAuthenticated(!!user);
+    if (user) {
+      setUserName(user.name);
+    }
   }, []);
 
   const toggleDarkMode = () => {
@@ -23,6 +32,13 @@ export const Layout = ({ children }: LayoutProps) => {
     const profile = profileStorage.getProfile();
     profileStorage.updateProfile({ ...profile, darkMode: newDarkMode });
     document.documentElement.classList.toggle("dark", newDarkMode);
+  };
+
+  const handleLogout = () => {
+    authUtils.logout();
+    setIsAuthenticated(false);
+    setUserName("");
+    window.location.href = "/";
   };
 
   useEffect(() => {
@@ -39,8 +55,8 @@ export const Layout = ({ children }: LayoutProps) => {
     { label: "Home", path: "/" },
     { label: "Lost Items", path: "/items?status=lost" },
     { label: "Found Items", path: "/items?status=found" },
-    { label: "Report", path: "/report-lost" },
-    { label: "Profile", path: "/profile" },
+    ...(isAuthenticated ? [{ label: "Report", path: "/report-lost" }] : []),
+    ...(isAuthenticated ? [{ label: "Profile", path: "/profile" }] : []),
   ];
 
   return (
