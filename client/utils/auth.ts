@@ -36,7 +36,7 @@ export const authUtils = {
   },
 
   // Sign up new user
-  signup: (email: string, name: string, password: string): { success: boolean; error?: string } => {
+  signup: (email: string, name: string, password: string, phone?: string): { success: boolean; error?: string } => {
     if (!email || !name || !password) {
       return { success: false, error: "All fields are required" };
     }
@@ -46,7 +46,7 @@ export const authUtils = {
     }
 
     const users = authUtils.getAllUsers();
-    
+
     if (users.some((u) => u.email === email)) {
       return { success: false, error: "Email already registered" };
     }
@@ -56,14 +56,15 @@ export const authUtils = {
       email,
       name,
       password, // In production, this should be hashed
+      phone: phone || "",
     };
 
     users.push(newUser);
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    
+
     // Auto-login after signup
     localStorage.setItem(AUTH_KEY, JSON.stringify(newUser));
-    
+
     return { success: true };
   },
 
