@@ -88,13 +88,14 @@ export const profileStorage = {
   getProfile: (): UserProfile => {
     try {
       const data = localStorage.getItem(PROFILE_KEY);
-      return (
-        data || {
-          name: "Student",
-          email: "",
-          darkMode: false,
-        }
-      );
+      if (data) {
+        return JSON.parse(data);
+      }
+      return {
+        name: "Student",
+        email: "",
+        darkMode: false,
+      };
     } catch {
       return {
         name: "Student",
