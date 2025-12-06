@@ -25,7 +25,7 @@ export default function SignUp() {
 
     setIsLoading(true);
 
-    const result = authUtils.signup(email, name, password);
+    const result = authUtils.signup(email, name, password, phone);
 
     if (result.success) {
       toast.success("Account created successfully!");
