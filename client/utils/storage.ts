@@ -69,12 +69,14 @@ export const itemStorage = {
 
   searchItems: (query: string): LostFoundItem[] => {
     const lowerQuery = query.toLowerCase();
-    return itemStorage.getItems().filter(
-      (item) =>
-        item.name.toLowerCase().includes(lowerQuery) ||
-        item.description.toLowerCase().includes(lowerQuery) ||
-        item.location.toLowerCase().includes(lowerQuery),
-    );
+    return itemStorage
+      .getItems()
+      .filter(
+        (item) =>
+          item.name.toLowerCase().includes(lowerQuery) ||
+          item.description.toLowerCase().includes(lowerQuery) ||
+          item.location.toLowerCase().includes(lowerQuery),
+      );
   },
 };
 

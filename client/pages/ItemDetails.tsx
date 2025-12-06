@@ -116,9 +116,7 @@ export default function ItemDetails() {
                 <div className="absolute top-4 right-4">
                   <span
                     className={`px-4 py-2 rounded-full text-xs font-bold text-white ${
-                      item.status === "lost"
-                        ? "bg-destructive"
-                        : "bg-success"
+                      item.status === "lost" ? "bg-destructive" : "bg-success"
                     }`}
                   >
                     {item.status === "lost" ? "LOST" : "FOUND"}
@@ -175,7 +173,9 @@ export default function ItemDetails() {
 
             {/* Contact Information */}
             <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-6 border border-primary/20 space-y-4">
-              <h2 className="text-lg font-bold text-foreground">Contact Information</h2>
+              <h2 className="text-lg font-bold text-foreground">
+                Contact Information
+              </h2>
 
               <div className="space-y-4">
                 <div className="bg-card rounded-xl p-4 border border-border">
@@ -200,9 +200,9 @@ export default function ItemDetails() {
                   <div className="bg-primary/10 text-primary rounded-xl p-4 border border-primary/20 text-sm">
                     <p className="font-medium">💡 If you found this item:</p>
                     <p className="mt-2">
-                      Please contact the person above through the campus directory
-                      or report it through the "Report Found Item" feature and we'll
-                      help match it.
+                      Please contact the person above through the campus
+                      directory or report it through the "Report Found Item"
+                      feature and we'll help match it.
                     </p>
                   </div>
                 ) : (
@@ -234,10 +234,7 @@ export default function ItemDetails() {
 
             {/* Report Details */}
             <div className="text-xs text-muted-foreground border-t border-border pt-6">
-              <p>
-                Reported on:{" "}
-                {formatDate(item.reportedAt)}
-              </p>
+              <p>Reported on: {formatDate(item.reportedAt)}</p>
             </div>
           </div>
         </div>

@@ -14,12 +14,14 @@ const CATEGORIES = [
 
 export default function AllItemsDashboard() {
   const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || "",
+  );
   const [categoryFilter, setCategoryFilter] = useState(
-    searchParams.get("category") || ""
+    searchParams.get("category") || "",
   );
   const [statusFilter, setStatusFilter] = useState(
-    searchParams.get("status") || ""
+    searchParams.get("status") || "",
   );
   const [sortBy, setSortBy] = useState("recent");
 
@@ -34,7 +36,7 @@ export default function AllItemsDashboard() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.location.toLowerCase().includes(searchQuery.toLowerCase())
+          item.location.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
 
@@ -52,15 +54,17 @@ export default function AllItemsDashboard() {
     if (sortBy === "recent") {
       items.sort(
         (a, b) =>
-          new Date(b.reportedAt).getTime() - new Date(a.reportedAt).getTime()
+          new Date(b.reportedAt).getTime() - new Date(a.reportedAt).getTime(),
       );
     } else if (sortBy === "oldest") {
       items.sort(
         (a, b) =>
-          new Date(a.reportedAt).getTime() - new Date(b.reportedAt).getTime()
+          new Date(a.reportedAt).getTime() - new Date(b.reportedAt).getTime(),
       );
     } else if (sortBy === "date-lost-recent") {
-      items.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      items.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+      );
     }
 
     return items;
@@ -110,7 +114,9 @@ export default function AllItemsDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Status Filter */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-foreground">Status</label>
+              <label className="text-sm font-semibold text-foreground">
+                Status
+              </label>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -143,7 +149,9 @@ export default function AllItemsDashboard() {
 
             {/* Sort By */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold text-foreground">Sort By</label>
+              <label className="text-sm font-semibold text-foreground">
+                Sort By
+              </label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -177,7 +185,8 @@ export default function AllItemsDashboard() {
         {/* Results Count */}
         <div className="mb-6">
           <p className="text-sm text-muted-foreground">
-            Showing <span className="font-semibold">{filteredItems.length}</span>{" "}
+            Showing{" "}
+            <span className="font-semibold">{filteredItems.length}</span>{" "}
             {filteredItems.length === 1 ? "item" : "items"}
           </p>
         </div>
@@ -209,9 +218,7 @@ export default function AllItemsDashboard() {
                   <div className="absolute top-3 right-3">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${
-                        item.status === "lost"
-                          ? "bg-destructive"
-                          : "bg-success"
+                        item.status === "lost" ? "bg-destructive" : "bg-success"
                       }`}
                     >
                       {item.status === "lost" ? "Lost" : "Found"}

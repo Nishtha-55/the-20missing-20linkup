@@ -130,7 +130,10 @@ export default function ReportFoundItem() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Item Name */}
             <div className="space-y-3">
-              <label htmlFor="itemName" className="block text-sm font-semibold text-foreground">
+              <label
+                htmlFor="itemName"
+                className="block text-sm font-semibold text-foreground"
+              >
                 Item Name <span className="text-destructive">*</span>
               </label>
               <input
@@ -170,8 +173,12 @@ export default function ReportFoundItem() {
 
             {/* Where did you find it */}
             <div className="space-y-3">
-              <label htmlFor="foundAt" className="block text-sm font-semibold text-foreground">
-                Where did you find it? <span className="text-destructive">*</span>
+              <label
+                htmlFor="foundAt"
+                className="block text-sm font-semibold text-foreground"
+              >
+                Where did you find it?{" "}
+                <span className="text-destructive">*</span>
               </label>
               <input
                 type="text"
@@ -187,7 +194,10 @@ export default function ReportFoundItem() {
 
             {/* Date Found */}
             <div className="space-y-3">
-              <label htmlFor="dateFound" className="block text-sm font-semibold text-foreground">
+              <label
+                htmlFor="dateFound"
+                className="block text-sm font-semibold text-foreground"
+              >
                 Date Found <span className="text-destructive">*</span>
               </label>
               <input
@@ -236,11 +246,17 @@ export default function ReportFoundItem() {
                 <div className="flex flex-col items-center gap-3 text-center">
                   <Upload className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
                   <div>
-                    <p className="font-medium text-foreground">Click to upload</p>
-                    <p className="text-xs text-muted-foreground">or drag and drop</p>
+                    <p className="font-medium text-foreground">
+                      Click to upload
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      or drag and drop
+                    </p>
                   </div>
                   {formData.image && (
-                    <p className="text-xs text-success font-medium">Image selected ✓</p>
+                    <p className="text-xs text-success font-medium">
+                      Image selected ✓
+                    </p>
                   )}
                 </div>
               </div>

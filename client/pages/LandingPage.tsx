@@ -38,7 +38,8 @@ export default function LandingPage() {
                   Find Your Lost Items
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground">
-                  A modern, community-driven platform to report and recover lost items across campus.
+                  A modern, community-driven platform to report and recover lost
+                  items across campus.
                 </p>
               </div>
 
@@ -61,12 +62,20 @@ export default function LandingPage() {
               {/* Stats */}
               <div className="flex gap-8 pt-4">
                 <div>
-                  <div className="text-3xl font-bold text-primary">{lostCount}</div>
-                  <div className="text-sm text-muted-foreground">Lost Items</div>
+                  <div className="text-3xl font-bold text-primary">
+                    {lostCount}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Lost Items
+                  </div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-accent">{foundCount}</div>
-                  <div className="text-sm text-muted-foreground">Found Items</div>
+                  <div className="text-3xl font-bold text-accent">
+                    {foundCount}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Found Items
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,21 +166,27 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">📋</div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Easy Reporting</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Easy Reporting
+              </h3>
               <p className="text-muted-foreground text-sm">
                 Report lost or found items in seconds with our simple form.
               </p>
             </div>
             <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">🔍</div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Smart Search</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Smart Search
+              </h3>
               <p className="text-muted-foreground text-sm">
                 Find your items quickly with our powerful search and filters.
               </p>
             </div>
             <div className="bg-card rounded-2xl p-8 border border-border hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Direct Contact</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Direct Contact
+              </h3>
               <p className="text-muted-foreground text-sm">
                 Connect with finders or losers directly to claim your items.
               </p>

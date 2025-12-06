@@ -29,7 +29,7 @@ export default function ProfileSettings() {
     // Count user's reports
     const allItems = itemStorage.getItems();
     const userItems = allItems.filter(
-      (item) => item.reportedBy === (savedProfile.name || "Student")
+      (item) => item.reportedBy === (savedProfile.name || "Student"),
     );
     setMyItems(userItems.length);
   }, []);
@@ -149,7 +149,9 @@ export default function ProfileSettings() {
 
                       <div className="bg-muted/30 rounded-lg p-4 border border-border flex items-center justify-between">
                         <div>
-                          <p className="font-medium text-foreground">Dark Mode</p>
+                          <p className="font-medium text-foreground">
+                            Dark Mode
+                          </p>
                           <p className="text-sm text-muted-foreground">
                             Use dark theme
                           </p>
@@ -240,7 +242,10 @@ export default function ProfileSettings() {
                 className="block bg-destructive/10 rounded-lg p-4 hover:bg-destructive/20 transition-colors text-center"
               >
                 <div className="text-2xl font-bold text-destructive">
-                  {itemStorage.getItems().filter((i) => i.status === "lost").length}
+                  {
+                    itemStorage.getItems().filter((i) => i.status === "lost")
+                      .length
+                  }
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">Lost Items</p>
               </Link>
@@ -250,9 +255,14 @@ export default function ProfileSettings() {
                 className="block bg-success/10 rounded-lg p-4 hover:bg-success/20 transition-colors text-center"
               >
                 <div className="text-2xl font-bold text-success">
-                  {itemStorage.getItems().filter((i) => i.status === "found").length}
+                  {
+                    itemStorage.getItems().filter((i) => i.status === "found")
+                      .length
+                  }
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">Found Items</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Found Items
+                </p>
               </Link>
             </div>
 
