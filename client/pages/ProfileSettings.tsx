@@ -23,19 +23,13 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     const savedProfile = profileStorage.getProfile();
-    if (typeof savedProfile === "string") {
-      const parsed = JSON.parse(savedProfile);
-      setProfile(parsed);
-      setTempProfile(parsed);
-    } else {
-      setProfile(savedProfile);
-      setTempProfile(savedProfile);
-    }
+    setProfile(savedProfile);
+    setTempProfile(savedProfile);
 
     // Count user's reports
     const allItems = itemStorage.getItems();
     const userItems = allItems.filter(
-      (item) => item.reportedBy === (profile.name || "Student")
+      (item) => item.reportedBy === (savedProfile.name || "Student")
     );
     setMyItems(userItems.length);
   }, []);
