@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { authUtils } from "@/utils/auth";
 import { toast } from "sonner";
-import { Mail, Lock, User, Eye, EyeOff, ArrowLeft, CheckCircle } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowLeft, CheckCircle, Phone } from "lucide-react";
 
 export default function SignUp() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
