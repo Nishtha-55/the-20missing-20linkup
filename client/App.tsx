@@ -12,6 +12,9 @@ import ReportFoundItem from "./pages/ReportFoundItem";
 import AllItemsDashboard from "./pages/AllItemsDashboard";
 import ItemDetails from "./pages/ItemDetails";
 import ProfileSettings from "./pages/ProfileSettings";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +27,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/report-lost" element={<ReportLostItem />} />
           <Route path="/report-found" element={<ReportFoundItem />} />
           <Route path="/items" element={<AllItemsDashboard />} />
