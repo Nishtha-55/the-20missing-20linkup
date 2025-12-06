@@ -162,7 +162,7 @@ export const Layout = ({ children }: LayoutProps) => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-border">
+            <div className="md:hidden pb-4 border-t border-border space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -177,6 +177,41 @@ export const Layout = ({ children }: LayoutProps) => {
                   {link.label}
                 </Link>
               ))}
+
+              {isAuthenticated ? (
+                <>
+                  <div className="border-t border-border pt-4 mt-4">
+                    <p className="text-sm text-muted-foreground py-2">Hi, {userName}</p>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-destructive hover:bg-destructive/10 rounded-lg transition-colors text-sm font-medium"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="border-t border-border pt-4 mt-4 space-y-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-center py-2 text-primary hover:bg-primary/10 rounded-lg transition-colors text-sm font-medium"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-center py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
             </div>
           )}
         </div>
