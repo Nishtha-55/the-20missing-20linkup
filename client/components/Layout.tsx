@@ -92,6 +92,7 @@ export const Layout = ({ children }: LayoutProps) => {
                   {link.label}
                 </Link>
               ))}
+
               <button
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -103,6 +104,34 @@ export const Layout = ({ children }: LayoutProps) => {
                   <Moon className="w-5 h-5 text-primary" />
                 )}
               </button>
+
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3 border-l border-border pl-8">
+                  <span className="text-sm text-muted-foreground">Hi, {userName}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="p-2 rounded-lg hover:bg-muted transition-colors text-destructive"
+                    title="Logout"
+                  >
+                    <LogOut className="w-5 h-5" />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-3 border-l border-border pl-8">
+                  <Link
+                    to="/login"
+                    className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="px-3 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
